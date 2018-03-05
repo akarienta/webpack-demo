@@ -1,0 +1,20 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "Used during learning Webpack from https://survivejs.com/webpack/foreword",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akarienta/webpack-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akarienta/webpack-demo/issues"
+  },
+  "homepage": "https://github.com/akarienta/webpack-demo#readme"
+}
