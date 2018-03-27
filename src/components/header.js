@@ -1,15 +1,16 @@
-export default () => {
-	const header = document.createElement('div');
-	header.classList.add('header');
+import React from 'react';
+import PropTypes from 'prop-types';
 
-	const headline = document.createElement('h1');
-	headline.innerHTML = 'Hello world';
+const Header = ({ headline, subHeadline }) => (
+	<div className="header">
+		<h1>{headline}</h1>
+		<h2>{subHeadline}</h2>
+	</div>
+);
 
-	const subHeadline = document.createElement('h2');
-	subHeadline.innerHTML = 'This is my Webpack demo page';
-
-	header.appendChild(headline);
-	header.appendChild(subHeadline);
-
-	return header;
+Header.PpropTypes = {
+	headline: PropTypes.string,
+	subHeadline: PropTypes.string
 };
+
+export default Header;

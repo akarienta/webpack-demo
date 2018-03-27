@@ -19,13 +19,14 @@ const commonConfig = merge([
 				title: 'Webpack demo'
 			})
 		]
-	}
+	},
+	parts.loadJavaScript({ include: PATHS.app })
 ]);
 
 const productionConfig = merge([
 	parts.extractSCSS({ minimize: { discardComments: { removeAll: true } } }),
 	parts.purifyCSS({
-		paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
+		paths: glob.sync(`${PATHS.app}/**/*.(js|jsx)`, { nodir: true }),
 		minimize: true
 	})
 ]);

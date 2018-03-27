@@ -1,6 +1,14 @@
-import header from './components/header';
+import React from 'react';
+import { render } from 'react-dom';
+
+import Main from './main';
 
 import './styles/main.scss';
 import 'purecss';
 
-document.body.appendChild(header());
+const root = document.createElement('div');
+root.setAttribute('id', 'root');
+
+document.body.appendChild(root);
+
+render(<Main />, root);
