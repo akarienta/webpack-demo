@@ -15,8 +15,8 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
    - [x] Separating CSS
    - [x] Eliminating Unused CSS
    - [x] Autoprefixing
-- [ ] Loading Assets
-   - [ ] Loader Definitions
+- [x] Loading Assets
+   - [x] Loader Definitions
    - [ ] Loading Images
    - [ ] Loading Fonts
    - [ ] Loading JavaScript

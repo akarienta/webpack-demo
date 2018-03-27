@@ -88,7 +88,8 @@ const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sou
 				options: {
 					importLoaders: 2,
 					minimize,
-					sourceMap
+					sourceMap,
+					modules: true
 				}
 			},
 			{

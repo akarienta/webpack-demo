@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 
 import Main from './main';
 
-import './styles/main.scss';
 import 'purecss';
+import './styles/main.scss';
 
 const root = document.createElement('div');
 root.setAttribute('id', 'root');
