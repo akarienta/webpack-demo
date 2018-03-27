@@ -1,5 +1,6 @@
-import component from './component';
+import header from './components/header';
 
-import './main.scss';
+import './styles/main.scss';
+import 'purecss';
 
-document.body.appendChild(component());
+document.body.appendChild(header());

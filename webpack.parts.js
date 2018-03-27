@@ -21,7 +21,7 @@ exports.loadSCSS = ({ include, exclude, sourceMap = false, host = 'localhost', p
 		module: {
 			rules: [
 				{
-					test: /\.scss$/,
+					test: /\.(css|scss)$/,
 					include,
 					exclude,
 					use: _SCSSLoaders({ sourceMap, postLoaders: ['style-loader'] })
@@ -49,11 +49,11 @@ exports.extractSCSS = ({ include, exclude } = {}) => {
 		module: {
 			rules: [
 				{
-					test: /\.scss$/,
+					test: /\.(css|scss)$/,
 					include,
 					exclude,
 					use: plugin.extract({
-						use: _SCSSLoaders({ minimize: true })
+						use: _SCSSLoaders({ minimize: { discardComments: { removeAll: true } } })
 					})
 				}
 			]
