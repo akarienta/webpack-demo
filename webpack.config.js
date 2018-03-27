@@ -17,7 +17,7 @@ const commonConfig = merge([
 	}
 ]);
 
-const productionConfig = merge([]);
+const productionConfig = merge([parts.loadSCSS()]);
 
 const developmentConfig = merge([
 	{
@@ -28,6 +28,11 @@ const developmentConfig = merge([
 		]
 	},
 	parts.devServer({
+		host: process.env.HOST,
+		port: process.env.PORT
+	}),
+	parts.loadSCSS({
+		sourceMap: true,
 		host: process.env.HOST,
 		port: process.env.PORT
 	})

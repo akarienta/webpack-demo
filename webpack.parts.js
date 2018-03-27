@@ -13,3 +13,48 @@ exports.devServer = ({ host, port } = {}) => ({
 		}
 	}
 });
+
+exports.loadSCSS = ({ include, exclude, sourceMap = false, host = 'localhost', port = '8080' } = {}) => {
+	const base = {
+		module: {
+			rules: [
+				{
+					test: /\.scss$/,
+					include,
+					exclude,
+					use: [
+						'style-loader',
+						{
+							loader: 'css-loader',
+							options: {
+								importLoaders: 2,
+								sourceMap
+							}
+						},
+						{
+							loader: 'postcss-loader',
+							options: {
+								plugins: () => [require('autoprefixer')],
+								sourceMap
+							}
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap
+							}
+						}
+					]
+				}
+			]
+		}
+	};
+
+	if (sourceMap) {
+		base.output = {
+			publicPath: `http://${host}:${port}/`
+		};
+	}
+
+	return base;
+};
