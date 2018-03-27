@@ -13,7 +13,7 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
 - [x] Styling
    - [x] Loading Styles
    - [x] Separating CSS
-   - [ ] Eliminating Unused CSS
+   - [x] Eliminating Unused CSS
    - [ ] Autoprefixing
 - [ ] Loading Assets
    - [ ] Loader Definitions

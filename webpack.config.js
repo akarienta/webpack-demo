@@ -2,10 +2,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
+const glob = require('glob');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const parts = require('./webpack.parts');
+
+const PATHS = {
+	app: path.join(__dirname, 'src')
+};
 
 const commonConfig = merge([
 	{
@@ -17,7 +22,13 @@ const commonConfig = merge([
 	}
 ]);
 
-const productionConfig = merge([parts.extractSCSS()]);
+const productionConfig = merge([
+	parts.extractSCSS({ minimize: { discardComments: { removeAll: true } } }),
+	parts.purifyCSS({
+		paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
+		minimize: true
+	})
+]);
 
 const developmentConfig = merge([
 	{

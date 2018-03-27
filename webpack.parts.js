@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PurifyCSSPlugin = require("purifycss-webpack");
 
 exports.devServer = ({ host, port } = {}) => ({
 	devServer: {
@@ -39,7 +40,7 @@ exports.loadSCSS = ({ include, exclude, sourceMap = false, host = 'localhost', p
 	return base;
 };
 
-exports.extractSCSS = ({ include, exclude } = {}) => {
+exports.extractSCSS = ({ include, exclude, minimize = false } = {}) => {
 	const plugin = new ExtractTextPlugin({
 		allChunks: true,
 		filename: '[name].css'
@@ -53,7 +54,7 @@ exports.extractSCSS = ({ include, exclude } = {}) => {
 					include,
 					exclude,
 					use: plugin.extract({
-						use: _SCSSLoaders({ minimize: { discardComments: { removeAll: true } } })
+						use: _SCSSLoaders({ minimize })
 					})
 				}
 			]
@@ -61,6 +62,10 @@ exports.extractSCSS = ({ include, exclude } = {}) => {
 		plugins: [plugin]
 	};
 };
+
+exports.purifyCSS = ({ paths, minimize }) => ({
+    plugins: [new PurifyCSSPlugin({ paths, minimize })],
+});
 
 const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sourceMap = false } = {}) =>
 	postLoaders
