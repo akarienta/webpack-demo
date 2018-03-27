@@ -1,3 +1,5 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 exports.devServer = ({ host, port } = {}) => ({
 	devServer: {
 		stats: 'errors-only',
@@ -22,29 +24,7 @@ exports.loadSCSS = ({ include, exclude, sourceMap = false, host = 'localhost', p
 					test: /\.scss$/,
 					include,
 					exclude,
-					use: [
-						'style-loader',
-						{
-							loader: 'css-loader',
-							options: {
-								importLoaders: 2,
-								sourceMap
-							}
-						},
-						{
-							loader: 'postcss-loader',
-							options: {
-								plugins: () => [require('autoprefixer')],
-								sourceMap
-							}
-						},
-						{
-							loader: 'sass-loader',
-							options: {
-								sourceMap
-							}
-						}
-					]
+					use: _SCSSLoaders({ sourceMap, postLoaders: ['style-loader'] })
 				}
 			]
 		}
@@ -58,3 +38,53 @@ exports.loadSCSS = ({ include, exclude, sourceMap = false, host = 'localhost', p
 
 	return base;
 };
+
+exports.extractSCSS = ({ include, exclude } = {}) => {
+	const plugin = new ExtractTextPlugin({
+		allChunks: true,
+		filename: '[name].css'
+	});
+
+	return {
+		module: {
+			rules: [
+				{
+					test: /\.scss$/,
+					include,
+					exclude,
+					use: plugin.extract({
+						use: _SCSSLoaders({ minimize: true })
+					})
+				}
+			]
+		},
+		plugins: [plugin]
+	};
+};
+
+const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sourceMap = false } = {}) =>
+	postLoaders
+		.concat([
+			{
+				loader: 'css-loader',
+				options: {
+					importLoaders: 2,
+					minimize,
+					sourceMap
+				}
+			},
+			{
+				loader: 'postcss-loader',
+				options: {
+					plugins: () => [require('autoprefixer')],
+					sourceMap
+				}
+			},
+			{
+				loader: 'sass-loader',
+				options: {
+					sourceMap
+				}
+			}
+		])
+		.concat(preLoaders);

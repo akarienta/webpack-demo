@@ -17,7 +17,7 @@ const commonConfig = merge([
 	}
 ]);
 
-const productionConfig = merge([parts.loadSCSS()]);
+const productionConfig = merge([parts.extractSCSS()]);
 
 const developmentConfig = merge([
 	{

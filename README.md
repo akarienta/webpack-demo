@@ -12,7 +12,7 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
    - [x] Composing Configuration
 - [x] Styling
    - [x] Loading Styles
-   - [ ] Separating CSS
+   - [x] Separating CSS
    - [ ] Eliminating Unused CSS
    - [ ] Autoprefixing
 - [ ] Loading Assets
