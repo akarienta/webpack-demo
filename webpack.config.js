@@ -15,7 +15,10 @@ const commonConfig = merge([
 	{
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: 'Webpack demo'
+				title: 'Webpack demo',
+				minify: {
+                    collapseWhitespace: true
+				}
 			})
 		]
 	},
@@ -23,7 +26,21 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
-	parts.extractSCSS({ minimize: { discardComments: { removeAll: true } } })
+	{
+		output: {
+			filename: 'bundle.[hash].js'
+		}
+	},
+	parts.extractSCSS({
+		minimize: { discardComments: { removeAll: true } },
+		filename: 'styles.[hash].css'
+	}),
+	parts.loadImages({
+		options: {
+			limit: 15000,
+			name: './images/image.[hash].[ext]'
+		}
+	})
 ]);
 
 const developmentConfig = merge([
@@ -42,7 +59,8 @@ const developmentConfig = merge([
 		sourceMap: true,
 		host: process.env.HOST,
 		port: process.env.PORT
-	})
+	}),
+	parts.loadImages()
 ]);
 
 module.exports = mode => {

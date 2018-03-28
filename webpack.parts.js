@@ -39,10 +39,10 @@ exports.loadSCSS = ({ include, exclude, sourceMap = false, host = 'localhost', p
 	return base;
 };
 
-exports.extractSCSS = ({ include, exclude, minimize = false } = {}) => {
+exports.extractSCSS = ({ include, exclude, filename = '[name].[hash].css', minimize = false } = {}) => {
 	const plugin = new ExtractTextPlugin({
 		allChunks: true,
-		filename: '[name].css'
+		filename
 	});
 
 	return {
@@ -70,6 +70,22 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
 				include,
 				exclude,
 				use: 'babel-loader'
+			}
+		]
+	}
+});
+
+exports.loadImages = ({ include, exclude, options } = {}) => ({
+	module: {
+		rules: [
+			{
+				test: /\.(png|jpg)$/,
+				include,
+				exclude,
+				use: {
+					loader: 'url-loader',
+					options
+				}
 			}
 		]
 	}
