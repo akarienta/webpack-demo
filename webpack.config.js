@@ -2,7 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
-// const glob = require('glob');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
@@ -24,13 +23,7 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
-	parts.loadSCSS()
-    // TODO - How to get it working with non extracted files (style-loader as fallback, allChunks)?
-	// parts.extractSCSS({ minimize: { discardComments: { removeAll: true } } }),
-	// parts.purifyCSS({
-	// 	paths: glob.sync(`${PATHS.app}/**/*.(js|jsx)`, { nodir: true }),
-	// 	minimize: true
-	// })
+	parts.extractSCSS({ minimize: { discardComments: { removeAll: true } } })
 ]);
 
 const developmentConfig = merge([
