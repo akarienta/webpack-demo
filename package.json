@@ -4,7 +4,7 @@
   "description": "Used during learning Webpack from https://survivejs.com/webpack/foreword",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server --env development\"",
     "build": "webpack --env development",
     "build:prod": "webpack --env production"
   },
@@ -23,6 +23,7 @@
     "autoprefixer": "^8.2.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",

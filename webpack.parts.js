@@ -1,5 +1,6 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import GoogleFontsPlugin from 'google-fonts-webpack-plugin';
+import autoprefixer from 'autoprefixer';
 
 exports.devServer = ({ host, port } = {}) => ({
 	devServer: {
@@ -108,10 +109,8 @@ exports.loadSvg = ({ include, exclude, options } = {}) => ({
 	}
 });
 
-exports.loadGoogleFonts = (options) => ({
-	plugins: [
-		new GoogleFontsPlugin(options)
-	]
+exports.loadGoogleFonts = options => ({
+	plugins: [new GoogleFontsPlugin(options)]
 });
 
 const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sourceMap = false } = {}) =>
@@ -129,7 +128,7 @@ const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sou
 			{
 				loader: 'postcss-loader',
 				options: {
-					plugins: () => [require('autoprefixer')],
+					plugins: () => [autoprefixer],
 					sourceMap
 				}
 			},

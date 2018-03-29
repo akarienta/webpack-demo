@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const path = require('path');
-const WebpackNotifierPlugin = require('webpack-notifier');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+import webpack from 'webpack';
+import merge from 'webpack-merge'
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import WebpackNotifierPlugin from 'webpack-notifier';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 
-const parts = require('./webpack.parts');
+import parts from './webpack.parts';
 
 const PATHS = {
 	app: path.join(__dirname, 'src')
