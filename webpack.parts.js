@@ -91,6 +91,22 @@ exports.loadImages = ({ include, exclude, options } = {}) => ({
 	}
 });
 
+exports.loadSvg = ({ include, exclude, options } = {}) => ({
+	module: {
+		rules: [
+			{
+				test: /\.svg$/,
+				include,
+				exclude,
+				use: {
+					loader: 'file-loader',
+					options
+				}
+			}
+		]
+	}
+});
+
 const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sourceMap = false } = {}) =>
 	postLoaders
 		.concat([

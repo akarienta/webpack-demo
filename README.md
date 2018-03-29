@@ -17,7 +17,7 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
    - [x] Autoprefixing
 - [x] Loading Assets
    - [x] Loader Definitions
-   - [ ] Loading Images
+   - [x] Loading Images
    - [ ] Loading Fonts
    - [ ] Loading JavaScript
 - [ ] Building

@@ -17,7 +17,7 @@ const commonConfig = merge([
 			new HtmlWebpackPlugin({
 				title: 'Webpack demo',
 				minify: {
-                    collapseWhitespace: true
+					collapseWhitespace: true
 				}
 			})
 		]
@@ -40,6 +40,11 @@ const productionConfig = merge([
 			limit: 15000,
 			name: './images/image.[hash].[ext]'
 		}
+	}),
+	parts.loadSvg({
+		options: {
+			name: './images/image.[hash].[ext]'
+		}
 	})
 ]);
 
@@ -60,7 +65,8 @@ const developmentConfig = merge([
 		host: process.env.HOST,
 		port: process.env.PORT
 	}),
-	parts.loadImages()
+	parts.loadImages(),
+	parts.loadSvg()
 ]);
 
 module.exports = mode => {
