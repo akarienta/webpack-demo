@@ -18,7 +18,7 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
 - [x] Loading Assets
    - [x] Loader Definitions
    - [x] Loading Images
-   - [ ] Loading Fonts
+   - [x] Loading Fonts
    - [ ] Loading JavaScript
 - [ ] Building
    - [ ] Source Maps

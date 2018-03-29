@@ -45,6 +45,11 @@ const productionConfig = merge([
 		options: {
 			name: './images/image.[hash].[ext]'
 		}
+	}),
+	parts.loadGoogleFonts({
+		fonts: [{ family: 'Gloria Hallelujah' }],
+		path: 'fonts/',
+		filename: 'fonts/fonts.css'
 	})
 ]);
 
@@ -66,7 +71,10 @@ const developmentConfig = merge([
 		port: process.env.PORT
 	}),
 	parts.loadImages(),
-	parts.loadSvg()
+	parts.loadSvg(),
+	parts.loadGoogleFonts({
+		fonts: [{ family: 'Gloria Hallelujah' }]
+	})
 ]);
 
 module.exports = mode => {

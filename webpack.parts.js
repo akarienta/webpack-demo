@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 exports.devServer = ({ host, port } = {}) => ({
 	devServer: {
@@ -105,6 +106,12 @@ exports.loadSvg = ({ include, exclude, options } = {}) => ({
 			}
 		]
 	}
+});
+
+exports.loadGoogleFonts = (options) => ({
+	plugins: [
+		new GoogleFontsPlugin(options)
+	]
 });
 
 const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sourceMap = false } = {}) =>
