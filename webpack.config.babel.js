@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import merge from 'webpack-merge'
+import merge from 'webpack-merge';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
@@ -78,6 +78,8 @@ const developmentConfig = merge([
 ]);
 
 module.exports = mode => {
+	process.env.BABEL_ENV = mode;
+
 	if (mode === 'production') {
 		return merge(commonConfig, productionConfig, { mode });
 	}

@@ -19,7 +19,7 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
    - [x] Loader Definitions
    - [x] Loading Images
    - [x] Loading Fonts
-   - [ ] Loading JavaScript
+   - [x] Loading JavaScript
 - [ ] Building
    - [ ] Source Maps
    - [ ] Bundle Splitting
