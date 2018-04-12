@@ -28,7 +28,12 @@ const commonConfig = merge([
 const productionConfig = merge([
 	{
 		output: {
-			filename: 'bundle.[hash].js'
+			filename: '[name].[hash].js'
+		},
+		optimization: {
+			splitChunks: {
+				chunks: 'initial'
+			}
 		}
 	},
 	parts.extractSCSS({
@@ -75,7 +80,7 @@ const developmentConfig = merge([
 	parts.loadGoogleFonts({
 		fonts: [{ family: 'Gloria Hallelujah' }]
 	}),
-    parts.generateSourceMaps({ type: "source-map" })
+	parts.generateSourceMaps({ type: 'source-map' })
 ]);
 
 module.exports = mode => {

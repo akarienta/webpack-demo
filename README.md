@@ -22,7 +22,7 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
    - [x] Loading JavaScript
 - [x] Building
    - [x] Source Maps
-   - [ ] Bundle Splitting
+   - [x] Bundle Splitting
    - [ ] Code Splitting
    - [ ] Tidying Up
 - [ ] Optimizing
