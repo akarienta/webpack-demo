@@ -74,7 +74,8 @@ const developmentConfig = merge([
 	parts.loadSvg(),
 	parts.loadGoogleFonts({
 		fonts: [{ family: 'Gloria Hallelujah' }]
-	})
+	}),
+    parts.generateSourceMaps({ type: "source-map" })
 ]);
 
 module.exports = mode => {

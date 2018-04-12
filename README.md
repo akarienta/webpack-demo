@@ -20,8 +20,8 @@ Used during learning Webpack from https://survivejs.com/webpack/foreword
    - [x] Loading Images
    - [x] Loading Fonts
    - [x] Loading JavaScript
-- [ ] Building
-   - [ ] Source Maps
+- [x] Building
+   - [x] Source Maps
    - [ ] Bundle Splitting
    - [ ] Code Splitting
    - [ ] Tidying Up

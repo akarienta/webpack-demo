@@ -113,6 +113,10 @@ exports.loadGoogleFonts = options => ({
 	plugins: [new GoogleFontsPlugin(options)]
 });
 
+exports.generateSourceMaps = ({ type }) => ({
+	devtool: type
+});
+
 const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sourceMap = false } = {}) =>
 	postLoaders
 		.concat([
