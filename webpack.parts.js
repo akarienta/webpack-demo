@@ -18,30 +18,20 @@ exports.devServer = ({ host, port } = {}) => ({
 	}
 });
 
-exports.loadSCSS = ({ include, exclude, sourceMap = false, host = 'localhost', port = '8080' } = {}) => {
-	const base = {
-		module: {
-			rules: [
-				{
-					test: /\.(css|scss)$/,
-					include,
-					exclude,
-					use: _SCSSLoaders({ sourceMap, postLoaders: ['style-loader'] })
-				}
-			]
-		}
-	};
-
-	if (sourceMap) {
-		base.output = {
-			publicPath: `http://${host}:${port}/`
-		};
+exports.loadCSS = ({ include, exclude } = {}) => ({
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				include,
+				exclude,
+				use: _CSSLoaders({ postLoaders: ['style-loader'] })
+			}
+		]
 	}
+});
 
-	return base;
-};
-
-exports.extractSCSS = ({ include, exclude, filename = '[name].[hash].css', minimize = false } = {}) => {
+exports.extractCSS = ({ include, exclude, filename = '[name].css', minimize = false } = {}) => {
 	const plugin = new ExtractTextPlugin({
 		allChunks: true,
 		filename
@@ -51,11 +41,11 @@ exports.extractSCSS = ({ include, exclude, filename = '[name].[hash].css', minim
 		module: {
 			rules: [
 				{
-					test: /\.(css|scss)$/,
+					test: /\.css$/,
 					include,
 					exclude,
 					use: plugin.extract({
-						use: _SCSSLoaders({ minimize })
+						use: _CSSLoaders({ minimize })
 					})
 				}
 			]
@@ -117,7 +107,7 @@ exports.generateSourceMaps = ({ type }) => ({
 	devtool: type
 });
 
-const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sourceMap = false } = {}) =>
+const _CSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false } = {}) =>
 	postLoaders
 		.concat([
 			{
@@ -125,21 +115,13 @@ const _SCSSLoaders = ({ preLoaders = [], postLoaders = [], minimize = false, sou
 				options: {
 					importLoaders: 2,
 					minimize,
-					sourceMap,
 					modules: true
 				}
 			},
 			{
 				loader: 'postcss-loader',
 				options: {
-					plugins: () => [autoprefixer],
-					sourceMap
-				}
-			},
-			{
-				loader: 'sass-loader',
-				options: {
-					sourceMap
+					plugins: () => [autoprefixer]
 				}
 			}
 		])

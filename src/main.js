@@ -6,7 +6,7 @@ import Image from './components/Image';
 import CenteredDiv from './components/CenteredDiv';
 import Vector from './components/Vector';
 
-import defaultTheme from './styles/themes/defaultTheme';
+import defaultTheme from './styles/themes/default';
 
 import img from './assets/images/img.jpg';
 import svg from './assets/images/svg.svg';
@@ -18,9 +18,9 @@ const Main = () => (
 			<CenteredDiv>
 				<Image src={img} alt="Image placeholder" />
 			</CenteredDiv>
-            <CenteredDiv>
-                <Vector src={svg} width={400} height={200} />
-            </CenteredDiv>
+			<CenteredDiv>
+				<Vector src={svg} width={400} height={200} />
+			</CenteredDiv>
 		</div>
 	</ThemeProvider>
 );

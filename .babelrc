@@ -2,7 +2,7 @@
 	"presets": ["env", "react"],
 	"env": {
 		"development": {
-			"plugins": ["annotate-console-log"]
+			"plugins": ["annotate-console-log", "syntax-dynamic-import", "babel-plugin-styled-components"]
 		}
 	}
 }

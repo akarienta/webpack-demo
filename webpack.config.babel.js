@@ -28,7 +28,7 @@ const commonConfig = merge([
 const productionConfig = merge([
 	{
 		output: {
-			filename: '[name].[hash].js'
+			filename: '[name].js'
 		},
 		optimization: {
 			splitChunks: {
@@ -36,19 +36,19 @@ const productionConfig = merge([
 			}
 		}
 	},
-	parts.extractSCSS({
+	parts.extractCSS({
 		minimize: { discardComments: { removeAll: true } },
-		filename: 'styles.[hash].css'
+		filename: 'styles.css'
 	}),
 	parts.loadImages({
 		options: {
 			limit: 15000,
-			name: './images/image.[hash].[ext]'
+			name: './images/[name].[ext]'
 		}
 	}),
 	parts.loadSvg({
 		options: {
-			name: './images/image.[hash].[ext]'
+			name: './images/[name].[ext]'
 		}
 	}),
 	parts.loadGoogleFonts({
@@ -70,11 +70,7 @@ const developmentConfig = merge([
 		host: process.env.HOST,
 		port: process.env.PORT
 	}),
-	parts.loadSCSS({
-		sourceMap: true,
-		host: process.env.HOST,
-		port: process.env.PORT
-	}),
+	parts.loadCSS(),
 	parts.loadImages(),
 	parts.loadSvg(),
 	parts.loadGoogleFonts({
