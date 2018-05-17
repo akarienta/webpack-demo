@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import Header from './components/Header';
+import AsyncHeader from './components/AsyncHeader';
 import Image from './components/Image';
 import CenteredDiv from './components/CenteredDiv';
 import Vector from './components/Vector';
@@ -14,7 +14,7 @@ import svg from './assets/images/svg.svg';
 const Main = () => (
 	<ThemeProvider theme={defaultTheme}>
 		<div>
-			<Header headline="Hello world" subHeadline="This is my Webpack demo app" />
+			<AsyncHeader headline="Hello world" subHeadline="This is my Webpack demo app" />
 			<CenteredDiv>
 				<Image src={img} alt="Image placeholder" />
 			</CenteredDiv>

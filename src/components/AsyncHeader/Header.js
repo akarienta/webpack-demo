@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CenteredDiv from './CenteredDiv';
-import { H1, H2 } from './Headlines';
+import CenteredDiv from '../CenteredDiv';
+import { H1, H2 } from '../Headlines';
 
 const Header = ({ headline, subHeadline }) => (
 	<CenteredDiv>

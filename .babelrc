@@ -1,8 +1,9 @@
 {
 	"presets": ["env", "react"],
+	"plugins": ["syntax-dynamic-import"],
 	"env": {
 		"development": {
-			"plugins": ["annotate-console-log", "syntax-dynamic-import", "babel-plugin-styled-components"]
+			"plugins": ["annotate-console-log", "babel-plugin-styled-components"]
 		}
 	}
 }

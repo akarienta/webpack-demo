@@ -28,7 +28,8 @@ const commonConfig = merge([
 const productionConfig = merge([
 	{
 		output: {
-			filename: '[name].js'
+			filename: '[name].js',
+            chunkFilename: 'chunk-[id].js'
 		},
 		optimization: {
 			splitChunks: {
